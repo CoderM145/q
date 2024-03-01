@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>郭芊贝还钱</title>
+<style>
+  /* 页面和内容样式设置 */
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* 禁止页面滚动 */
+    background-color: black; /* 页面背景颜色为黑色 */
+    color: white; /* 页面文字颜色为白色 */
+    font-family: Arial, sans-serif; /* 设置字体 */
+  }
+  .header {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 54px;
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="header">郭芊贝目前要还这么多钱：（人民币）</div>
+<div class="content" id="content">
+  <!-- 数值将在这里动态更新 -->
+</div>
+<div class="footer">&copy; Cen 版权所有</div>
+
+<script>
+  // 更新数值的函数
+  function updateValue() {
+    var startDate = new Date('2024-01-08T00:00:00Z'); // 使用UTC时间
+    var nowDate = new Date();
+    var seconds = (nowDate - startDate) / 1000; // 计算秒数差
+    var n = Math.pow(seconds * 500, 2) + 1; // 计算n的值
+    document.getElementById('content').innerText = n.toLocaleString('fullwide', {useGrouping:false}); // 更新页面上的数值
+  }
+
+  // 定义定时器，每秒更新一次数值
+  setInterval(updateValue, 10);
+
+  // 页面加载完成时进行第一次数值更新
+  updateValue();
+</script>
+</body>
+</html>
